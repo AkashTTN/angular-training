@@ -1,0 +1,46 @@
+<div class="component">
+    <h2>home is a nested component and it works!</h2>
+    <p>@Input: passing data from parent to child</p>
+    <h3>My given name is {{givenName}}</h3>
+
+    <p>@Output and EventEmitter: passing data from child to parent using custom event</p>
+    <button (click)="fireOnShout()">Shout.</button>
+
+    <h4>Binding</h4>
+    <section class="two-way-binding mb-5">
+        <p>2 Way Binding</p>
+        <label for="name">Your name:</label>
+        <input id="name" type="text" [(ngModel)]="name">
+        <p>Hi {{name}}</p>
+    </section>
+
+    <section class="property-binding mb-5">
+        <p>Property & Event Binding</p>
+        <p>Button will be enabled after 2 seconds.</p>
+        <button [disabled]="isDisabled" (click)="isDisabled=true">
+            Click to disable.
+        </button>
+    </section>
+
+    <h4>Directives</h4>
+    <section class="built-in-directives">
+        <p>ngFor</p>
+        <ul class="listing">
+            <li *ngFor="let item of sampleData">{{item.name}} is a {{item.belt}} belt.</li>
+        </ul>
+
+        <p>ngIf with else condition</p>
+        <button *ngIf="!reveal; else revealed" (click)="toggleSecret()">Click to reveal a secret.</button>
+        <ng-template #revealed>
+            <button *ngIf="reveal; else revealed" (click)="toggleSecret()">Click to hide the secret.</button>
+        </ng-template>
+        <p *ngIf="reveal">{{secret}}</p>
+
+        <p>ngStyle</p>
+        <button class="switch" (click)="toggleSwitch()" [ngStyle]="{backgroundColor: getButtonColor()}">{{switchStatus}}</button>
+
+        <p>ngClass</p>
+        <button class="switch" [ngClass]="{on: switchStatus === 'ON', off: switchStatus==='OFF'}">{{switchStatus}}</button>
+    </section>
+
+</div>

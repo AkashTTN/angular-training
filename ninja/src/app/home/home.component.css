@@ -1,0 +1,27 @@
+input#name {
+    margin-left: 10px;
+}
+
+button {
+    padding: .3rem .5rem;
+    border-radius: 3px;
+    border: none;
+    font: medium;
+    font-weight: bolder;
+}
+
+button.switch {
+    color: white;
+}
+
+button:focus {
+    outline: none;
+}
+
+.off {
+    background-color: red;
+}
+
+.on {
+    background-color: green;
+}
