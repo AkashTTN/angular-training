@@ -1,4 +1,5 @@
 <div class="component">
+    <h2>Routing and Parameter extraction</h2>
     <h3 class="heading-3">All Items</h3>
     <ul class="listings">
         <li *ngFor="let listing of listings" class="listings-item">
@@ -7,14 +8,51 @@
             </button>
         </li>
     </ul>
-    <h3 class="heading-3">Add an item yourself!</h3>
-    <div class="add-item-listing">
-        <label class="mb-5" for="inputListingName">Name of Item</label>
-        <input
-        [ngClass]="{error: inputError}"
-        [(ngModel)]="inputListingName" 
-        id="inputListingName" type="text">
-        <button (click)="onAddItem()" class="add-item-listing-button btn-primary">Add</button>
-        <p class="input-error-text" *ngIf="inputError">Invalid name.</p>
-    </div>
+    <section>
+        <h2>Forms</h2>
+        <h3 class="heading-3">Add an item yourself!</h3>
+        <h4>Normal input handler</h4>
+        <div class="add-item-listing">
+            <label class="mb-5" for="inputListingName">Name of Item</label>
+            <input id="inputListingName" [ngClass]="{error: inputError}" [(ngModel)]="inputListingName"
+                id="inputListingName" type="text">
+            <button (click)="onAddItem()" class="add-item-listing-button btn-primary">Add</button>
+            <p class="input-error-text" *ngIf="inputError">Invalid name.</p>
+        </div>
+
+        <h4>Template Driven Form</h4>
+        <form (ngSubmit)="onSubmitTemplateForm()" #templateForm="ngForm">
+            <label for="userName">Name: </label>
+            <input id="userName" class="mr-10" ngModel name="userName" type="text" required>
+            <label for="userAge">Age: </label>
+            <input id="userAge" class="mr-10" ngModel name="userAge" type="text" required>
+            <h4>Form Control Grouping</h4>
+            <div ngModelGroup="companyDetails">
+                <label for="company">Company: </label>
+                <input id="company" ngModel class="mr-10" name="company" type="text" required>
+                <label for="Sector">Sector: </label>
+                <input id="sector" ngModel name="sector" type="text" class="mb-15 mr-10" required>
+            </div>
+            <p *ngIf="templateForm.invalid && templateForm.touched">Note: Empty value(s) not allowed.</p>
+            <button [disabled]="templateForm.invalid" class="btn-primary" type="submit">Submit</button>
+        </form>
+
+        <h4>Reactive Form</h4>
+        <form [formGroup]="reactiveForm" (ngSubmit)="onSubmitReactiveForm()">
+            <label for="competency">Competency: </label>
+            <input formControlName="competency" id="competency" class="mr-10" type="text" required>
+            <label for="iceCreamFlavor">Ice Cream Flavor: </label>
+            <input formControlName="iceCreamFlavor" id="iceCreamFlavor" class="mr-10" type="text"
+                required>
+            <h4>Grouping Controls in a Reactive Form</h4>
+            <div formGroupName="companyDetails">
+                <label for="reactiveFormCompany">Company: </label>
+                <input id="reactiveFormCompany" class="mr-10" formControlName="name" type="text" required>
+                <label for="reactiveFormSector">Sector: </label>
+                <input id="reactiveFormSector" type="text" formControlName="sector" class="mb-15 mr-10" required>
+            </div>
+            <p *ngIf="reactiveForm.invalid && reactiveForm.touched">Note: Invalid Data.</p>
+            <button [disabled]="reactiveForm.invalid" class="btn-primary" type="submit">Submit</button>
+        </form>
+    </section>
 </div>
