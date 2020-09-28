@@ -5,6 +5,30 @@
     padding: 10px 20px;
 }
 
+.heading-3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .mb-5 {
     margin-bottom: 5px;
+}
+
+.btn-primary {
+    color: black;
+    background-color: #ccc;
+    padding: .7rem 1rem;
+    border-radius: 3px;
+    font-weight: bolder;
+    border: none;
+}
+
+.btn-primary:focus {
+    outline: none;
+}
+
+.btn-primary:hover {
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    transition: all .3s;
 }

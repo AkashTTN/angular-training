@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { ListingsService } from '../listings.service';
 
 @Component({
   selector: 'app-home',
@@ -7,41 +9,25 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  @Input() givenName;
-  @Output() onShout = new EventEmitter();
+  listings: { id: number, name: string }[];
+  inputListingName: string;
+  inputError: boolean = false;
 
-  name = '';
-  isDisabled = true;
-  sampleData = [{ name: 'Akash', belt: 'yellow' }, { name: 'Avinash', belt: 'green' }];
-  secret="Black is not a color and we can travel into the future but not in the past.";
-  reveal=false;
-  switchStatus='ON';
-  
-  constructor() {
-    this.enableAfterTwoSeconds();
+  constructor(private listingsService: ListingsService) {
   }
 
   ngOnInit(): void {
+    this.listings = this.listingsService.getListings();
   }
 
-  toggleSecret() {
-    this.reveal = !this.reveal;
-  }
-
-  toggleSwitch() {
-    this.switchStatus = (this.switchStatus === 'ON' ? 'OFF' : 'ON');
-  }
-
-  getButtonColor() {
-    return this.switchStatus === 'ON' ? 'green': 'red';
-  }
-
-  fireOnShout() {
-    this.onShout.emit(this.givenName);
-  }
-
-  enableAfterTwoSeconds() {
-    setTimeout(() => this.isDisabled = false, 2000);
+  onAddItem(): void {
+    this.inputError = false;
+    if (this.inputListingName.trim().length === 0) {
+      this.inputError = true;
+      return;
+    }
+    this.listingsService.addListing(this.inputListingName);
+    this.inputListingName = '';
   }
 
 }

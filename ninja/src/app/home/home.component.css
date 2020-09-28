@@ -1,7 +1,3 @@
-input#name {
-    margin-left: 10px;
-}
-
 button {
     padding: .3rem .5rem;
     border-radius: 3px;
@@ -10,18 +6,20 @@ button {
     font-weight: bolder;
 }
 
-button.switch {
-    color: white;
+.listings {
+    padding-left: 0px;
+    list-style: none;
 }
 
-button:focus {
-    outline: none;
+.add-item-listing > label,
+.add-item-listing > input {
+    margin-right: 10px;
 }
 
-.off {
-    background-color: red;
+.error {
+    border: 1px solid red;
 }
 
-.on {
-    background-color: green;
+.input-error-text {
+    color: red;
 }

@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ninja';
-  givenName='homly child';
-
-  shout(givenName) {
-    alert(`${givenName} is shouting.`);
-  }
-
 }
