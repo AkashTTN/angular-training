@@ -37,10 +37,19 @@
         <p *ngIf="reveal">{{secret}}</p>
 
         <p>ngStyle</p>
-        <button class="switch" (click)="toggleSwitch()" [ngStyle]="{backgroundColor: getButtonColor()}">{{switchStatus}}</button>
+        <button class="switch" (click)="toggleSwitch()"
+            [ngStyle]="{backgroundColor: getButtonColor()}">{{switchStatus}}</button>
 
         <p>ngClass</p>
-        <button class="switch" [ngClass]="{on: switchStatus === 'ON', off: switchStatus==='OFF'}">{{switchStatus}}</button>
+        <button class="switch"
+            [ngClass]="{on: switchStatus === 'ON', off: switchStatus==='OFF'}">{{switchStatus}}</button>
+
+        <p>ngSwitch</p>
+        <div [ngSwitch]="switchStatus">
+            <p *ngSwitchCase="'ON'">The switch is ON.</p>
+            <p *ngSwitchCase="'OFF'">The switch is OFF.</p>
+            <p *ngSwitchDefault>Default Case.</p>
+        </div>
     </section>
 
 </div>
