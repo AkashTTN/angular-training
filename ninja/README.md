@@ -1,7 +1,11 @@
-# Ninja
+## Structure
+> Week wise branch: Checkout appropriate branch for that weeks exercise.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+### Topic Overview
+Week 1: intro directives, binding, event emitter (done)  
+Week 2: services, routing, observables, life cycle methods (in progress)
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Quick Start
+```
+cd ninja && ng serve
+```
