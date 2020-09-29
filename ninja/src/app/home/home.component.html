@@ -1,8 +1,9 @@
 <div class="component">
     <h2>Routing and Parameter extraction</h2>
     <h3 class="heading-3">All Items</h3>
+    <input placeholder="Type to search" id="searchFilter" class="mb-15" [(ngModel)]="searchFilter" type="text">
     <ul class="listings">
-        <li *ngFor="let listing of listings" class="listings-item">
+        <li *ngFor="let listing of listings | filter: searchFilter" class="listings-item">
             <button [routerLink]="['listings', listing.id]" class="btn-primary mb-5">
                 {{listing.name}}
             </button>

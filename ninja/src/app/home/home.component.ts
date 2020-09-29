@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   inputListingName: string;
   inputError: boolean = false;
   reactiveForm: FormGroup;
+  searchFilter: string = '';
 
   constructor(private listingsService: ListingsService) {
   }
