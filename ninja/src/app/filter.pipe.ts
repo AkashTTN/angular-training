@@ -6,11 +6,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, searchFilter: string): any {
-    if (value.length === 0 || searchFilter === '') {
+
+    const parsedSearchFilter = searchFilter.trim().toLowerCase();
+
+    if (value.length === 0 || parsedSearchFilter === '') {
       return value;
     }
 
-    return value.filter((item) => item.name.toLowerCase().includes(searchFilter.toLowerCase()));
+    return value.filter((item) => item.name.toLowerCase().includes(parsedSearchFilter));
   }
 
 }

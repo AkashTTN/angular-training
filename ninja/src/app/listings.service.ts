@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ListingsService {
@@ -7,6 +8,7 @@ export class ListingsService {
         { id: 2, name: 'Backpack' }
     ];
     lastId: number;
+    itemAdded = new Subject<string>();
 
     constructor() {
         this.lastId = 2;
@@ -25,6 +27,8 @@ export class ListingsService {
             id: (this.lastId++) + 1,
             name
         });
+
+        this.itemAdded.next(name);
     }
 
     removeListing(id: number) {
