@@ -8,19 +8,23 @@ import { HomeComponent } from './home/home.component';
 import { ListingsService } from './listings.service';
 import { ListingComponent } from './listing/listing.component';
 import { FilterPipe } from './filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListingComponent,
-    FilterPipe
+    FilterPipe,
+    PostsComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ListingsService],
   bootstrap: [AppComponent]

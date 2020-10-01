@@ -16,9 +16,9 @@ export class HomeComponent implements OnInit {
 
   listings: { id: number, name: string }[];
   inputListingName: string;
-  inputError: boolean = false;
+  inputError = false;
   reactiveForm: FormGroup;
-  searchFilter: string = '';
+  searchFilter = '';
 
   constructor(private listingsService: ListingsService) {
   }
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
 
   emptyStringValidator(control: FormControl): { [s: string]: boolean } {
     if (control.value.trim().length === 0) {
-      return { 'emptyString': true }
+      return { emptyString: true }
     }
     return null;
   }
