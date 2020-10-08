@@ -3,8 +3,9 @@
 
 ### Topic Overview
 Week 1: intro directives, binding, event emitter (done)  
-Week 2: services, routing, observables, life cycle methods (in progress)  
-Week 3: forms, pipes, http client, build system and deployment, auth guard, resolvers, ngRx (in progress)
+Week 2: services, routing, observables, life cycle methods (done)  
+Week 3: forms, pipes, http client, build system and deployment, auth guard, resolvers, ngRx (in progress)  
+[Hackerrank Certificate](https://www.hackerrank.com/certificates/eab9324e846d)
 
 ### Quick Start
 ```

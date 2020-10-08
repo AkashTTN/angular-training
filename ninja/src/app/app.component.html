@@ -1,5 +1,14 @@
-<h1>{{title}}</h1>
-<button routerLink="posts" class="btn-primary">GO TO POSTS</button>
+<h1>{{ title }}</h1>
+<button *ngIf="isAuthenticated" routerLink="posts" class="btn-primary mr-10">
+  GO TO POSTS
+</button>
+<button *ngIf="!isAuthenticated" routerLink="auth" class="btn-primary mr-10">
+  AUTHENTICATE
+</button>
+<button routerLink="/" class="btn-primary mr-10">HOME</button>
+<button (click)="onLogout()" *ngIf="isAuthenticated" class="btn-primary">
+  LOGOUT
+</button>
 <h4>Subject observable</h4>
-<p>Item(s) in list: {{listingsCount}}</p>
+<p>Item(s) in list: {{ listingsCount }}</p>
 <router-outlet></router-outlet>

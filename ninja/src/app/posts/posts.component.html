@@ -1,24 +1,31 @@
 <button (click)="onFetchPosts()" class="mb-15 btn-primary">GET POSTS</button>
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-    <label class="mr-10" for="postTitle">Enter post title</label>
-    <input ngModel name="postTitle" class="mb-15" id="postTitle" type="text">
-    <div class="mb-15">
-        <label class="mr-10" for="postBody">Enter post body</label>
-        <textarea ngModel name="postBody" id="postBody" cols="30" rows="10" placeholder="Write something..."></textarea>
-    </div>
-    <button class="btn-primary" type="submit">SUBMIT POST</button>
+  <label class="mr-10" for="postTitle">Enter post title</label>
+  <input ngModel name="postTitle" class="mb-15" id="postTitle" type="text" />
+  <div class="mb-15">
+    <label class="mr-10" for="postBody">Enter post body</label>
+    <textarea
+      ngModel
+      name="postBody"
+      id="postBody"
+      cols="30"
+      rows="10"
+      placeholder="Write something..."
+    ></textarea>
+  </div>
+  <button class="btn-primary" type="submit">SUBMIT POST</button>
 </form>
 <ul class="posts-list">
-    <p *ngIf="isFetchingPosts || isSubmittingPost">Loading...</p>
-    <p *ngIf="error">Something happened.</p>
-    <ng-container *ngIf="!isFetchingPosts && !error">
-        <li class="mb-5 posts-list-item" *ngFor="let post of posts">
-            <p class="post-title">
-                {{post.title}}
-            </p>
-            <p class="post body">
-                {{post.body}}
-            </p>
-        </li>
-    </ng-container>
+  <p *ngIf="isFetchingPosts || isSubmittingPost">Loading...</p>
+  <p *ngIf="error">Something happened.</p>
+  <ng-container *ngIf="!isFetchingPosts && !error">
+    <li class="mb-5 posts-list-item" *ngFor="let post of posts">
+      <p class="post-title">
+        {{ post.title }}
+      </p>
+      <p class="post body">
+        {{ post.body }}
+      </p>
+    </li>
+  </ng-container>
 </ul>

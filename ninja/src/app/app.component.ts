@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from './auth/auth.service';
 
 import { ListingsService } from './listings.service';
 
@@ -9,11 +10,12 @@ import { ListingsService } from './listings.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  isAuthenticated = false;
   title = 'ninja';
   listingsCount: number;
   private itemSubs: Subscription;
-
-  constructor(private listingsService: ListingsService) {
+  private userSubs: Subscription;
+  constructor(private listingsService: ListingsService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -21,11 +23,19 @@ export class AppComponent implements OnInit, OnDestroy {
     this.itemSubs = this.listingsService.itemAdded.subscribe((data) => {
       this.listingsCount += 1;
     })
+    this.userSubs = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+    })
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy() {
     // Clean up subscription
     this.itemSubs.unsubscribe();
+    this.userSubs.unsubscribe();
   }
 
 }
